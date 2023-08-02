@@ -1,4 +1,2 @@
-alert('Hello world');
-
-let favoriteFood = 'spicy tuna roll'
-document.write(favoriteFood);
+// Creates an empty array
+let pokemonList = [1, 2, 3];
