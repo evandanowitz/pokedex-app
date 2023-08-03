@@ -1,20 +1,23 @@
 // Creates an empty array
-let pokemonList = [1, 2, 3];
+let pokemonList = [];
 
+// Create object using specific index
 pokemonList[0] = {
     name: 'Pikachu',
     height: 1.04,
-    type: 'Electric'
+    types: ['Electric']
 };
 
+// Create object using specific index
 pokemonList[1] = {
     name: 'Bulbasaur',
     height: 2.04,
-    type: ['Grass','Poison']
+    types: ['Grass','Poison']
 };
 
+// Create object using specific index
 pokemonList[2] = {
     name: 'Charizard',
     height: 5.07,
-    type: ['Fire','Flying']
+    types: ['Fire','Flying']
 };
