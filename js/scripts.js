@@ -10,3 +10,12 @@ for (let i = 0; i < pokemonList.length; i++) {
         document.write(pokemonList[i].name + ' (height: ' + pokemonList[i].height + ')' + (pokemonList[i].height > 3 ? ' - Wow, that\'s big!' : '') + '<br><br>');
     }
 }
+
+function divide (dividend, divisor) {
+    if (divisor === 0) {
+        return 'You\'re trying to divide by zero.'
+    } else {
+        let result = dividend / divisor;
+        return result;
+    }
+}
