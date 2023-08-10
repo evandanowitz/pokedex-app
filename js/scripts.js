@@ -1,21 +1,36 @@
-// Creates an empty array
-let pokemonList = [
-    {name: 'Pikachu', height: 1, types: ['Electric']},
-    {name: 'Bulbasaur', height: 2, types: ['Grass','Poison']},
-    {name: 'Charizard', height: 5, types: ['Fire','Flying']}
-];
+// // Pokémon array in IIFE
+let pokemonRepository = (function () {
 
-for (let i = 0; i < pokemonList.length; i++) {
-    if (pokemonList[i]) {
-        document.write(pokemonList[i].name + ' (height: ' + pokemonList[i].height + ')' + (pokemonList[i].height > 3 ? ' - Wow, that\'s big!' : '') + '<br><br>');
+    let pokemonList = [
+        {name: 'Pikachu', height: 1, types: ['Electric']},
+        {name: 'Bulbasaur', height: 2, types: ['Grass', 'Poison']},
+        {name: 'Charizard', height: 5, types: ['Fire', 'Flying']}
+    ];
+
+    function getAll() {
+        return pokemonList;
     }
-}
 
-function divide (dividend, divisor) {
-    if (divisor === 0) {
-        return 'You\'re trying to divide by zero.'
+    function add(pokemon) {
+        pokemonList.push(pokemon);
+    }
+
+   return {
+        getAll: getAll,
+        add: add,
+    }
+})();
+
+// calls .add Pokémon
+pokemonRepository.add({name: 'Charmander', height: 4, types: ['Poison']});
+// calls array to console
+console.log(pokemonRepository.getAll());
+
+// forEach() loop
+pokemonRepository.getAll().forEach(function(pokemon) {
+    if (pokemon.height > 3) {
+        document.write(pokemon.name + ' (Height: ' + pokemon.height + ' feet' + '),' + ' (Type: ' + pokemon.types + ')' + ' - Wow, that\'s big!' + '<br><br>');
     } else {
-        let result = dividend / divisor;
-        return result;
+        document.write(pokemon.name + ' (Height: ' + pokemon.height + ' feet' + '),' + ' (Type: ' + pokemon.types + ')' + '<br><br>');
     }
-}
+});
