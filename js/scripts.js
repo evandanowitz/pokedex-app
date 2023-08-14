@@ -70,12 +70,11 @@ let pokemonRepository = (function () {
     };
 })();
 
-// calls .add Pokémon
-pokemonRepository.add({name: 'Charmander', height: 4, types: ['Poison']});
-// calls array to console
-console.log(pokemonRepository.getAll());
-
-// forEach() loop
-pokemonRepository.getAll().forEach(function(pokemon) {
-    pokemonRepository.addListItem(pokemon);
+// Data is now loaded
+pokemonRepository.loadList().then(function() {
+    // forEach() loop
+    pokemonRepository.getAll().forEach(function(pokemon) {
+        // Call to add list item
+        pokemonRepository.addListItem(pokemon);
+    });
 });
