@@ -63,8 +63,11 @@ let pokemonRepository = (function () {
         // All returns from IIFE with matching keywords and values
         getAll: getAll,
         add: add,
-        addListItem: addListItem
-    }
+        addListItem: addListItem,
+        showDetails: showDetails,
+        loadList: loadList,
+        loadDetails: loadDetails
+    };
 })();
 
 // calls .add Pokémon
