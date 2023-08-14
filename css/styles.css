@@ -8,3 +8,19 @@ body {
 .pokedex_logo {
     text-align: center;
 }
+
+.pokemon-list {
+    list-style-type: none;
+}
+
+.button-class {
+    background-color: yellow;
+    color: black;
+    font-size: 18px;
+    text-align: center;
+    border: solid 2.5px darkblue;
+    padding: 5px;
+    margin: 5px;
+}
+
+}
