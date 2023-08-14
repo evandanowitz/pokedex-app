@@ -10,7 +10,10 @@ let pokemonRepository = (function () {
         pokemonList.push(pokemon);
     }
     function showDetails(pokemon) {
-        console.log(pokemon);
+        loadDetails(pokemon).then(function () {
+            // Pokémon's details logged to the console upon clicking its button
+            console.log(pokemon);
+        });
     }
     function addListItem(pokemon) {
         let pokemonList = document.querySelector('.pokemon-list');
