@@ -1,10 +1,8 @@
 // // Pokémon array in IIFE
 let pokemonRepository = (function () {
-    let pokemonList = [
-        {name: 'Pikachu', height: 1, types: ['Electric']},
-        {name: 'Bulbasaur', height: 2, types: ['Grass', 'Poison']},
-        {name: 'Charizard', height: 5, types: ['Fire', 'Flying']}
-    ];
+    let pokemonList = [];
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+
     function getAll() {
         return pokemonList;
     }
