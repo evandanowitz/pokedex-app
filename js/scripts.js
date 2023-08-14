@@ -28,7 +28,39 @@ let pokemonRepository = (function () {
         listPokemon.appendChild(button);
         pokemonList.appendChild(listPokemon);
     }
-   return {
+    function loadList() {
+        // GET complete list of Pokemon from API
+        return fetch(apiUrl).then(function (response) {
+            return response.json();
+        }).then(function (json) {
+            json.results.forEach(function (item) {
+                let pokemon = {
+                    name: item.name,
+                    detailsUrl: item.url
+                };
+                add(pokemon);
+            });
+        }).catch(function (e) {
+            console.error(e);
+        })
+    }
+   function loadDetails(item) {
+    // GET Pokémon details using URL from Pokémon object in parameter (item)
+    let url = item.detailsUrl;
+    return fetch(url).then(function (response) {
+        return response.json();
+    // Now we add the details to the item
+    }).then(function (details) {
+        item.imgUrl = details.sprites.front_default;
+        item.height = details.height;
+        item.types = details.types;
+    }).catch(function (e) {
+        console.error(e);
+    });
+   }
+
+    return {
+        // All returns from IIFE with matching keywords and values
         getAll: getAll,
         add: add,
         addListItem: addListItem
