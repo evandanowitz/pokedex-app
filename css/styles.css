@@ -57,14 +57,14 @@ body {
     list-style-type: none;
 }
 
-.button-class {
-    background-color: yellow;
-    color: black;
-    font-size: 18px;
-    text-align: center;
-    border: solid 2.5px darkblue;
-    padding: 5px;
-    margin: 5px;
+.pokemon-buttons { /* Used for styling buttons in list of Pokemon */
+  background-color: yellow;
+  color: black;
+  font-size: 18px;
+  text-align: center;
+  border: solid 2.5px darkblue;
+  padding: 5px;
+  margin: 7.5px;
 }
 
 /* responsive for all devices */
