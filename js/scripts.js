@@ -1,12 +1,16 @@
-// // Pokémon array in IIFE
 let pokemonRepository = (function () {
     let pokemonList = [];
+    // Pokémon array in IIFE
     let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+    // The URL to fetch Pokémon data from
+    let modalContainer = document.querySelector('#modal-container');
+    // Reference to the HTML element for displaying a modal
 
     function getAll() {
         return pokemonList;
     }
-    function add(pokemon) {
+
+    function add(pokemon) { // Adds a Pokemon object to the pokemonList
         pokemonList.push(pokemon);
     }
     function showDetails(pokemon) {
@@ -15,14 +19,16 @@ let pokemonRepository = (function () {
             console.log(pokemon);
         });
     }
-    function addListItem(pokemon) {
+
+    function addListItem(pokemon) { // Adds a Pokemon to the HTML list of Pokemon
         let pokemonList = document.querySelector('.pokemon-list');
         let listPokemon = document.createElement('li');
         let button = document.createElement('button');
-            // add click event listener to button
             button.addEventListener('click', function(event) {
+            // add click event listener to button
+                console.log('Button clicked:', pokemon.name);
                 showDetails(pokemon);
-            })
+            });
         button.innerText = pokemon.name;
         button.classList.add('button-class');
         listPokemon.appendChild(button);
@@ -42,7 +48,7 @@ let pokemonRepository = (function () {
             });
         }).catch(function (e) {
             console.error(e);
-        })
+        }
     }
    function loadDetails(item) {
     // GET Pokémon details using URL from Pokémon object in parameter (item)
@@ -59,8 +65,8 @@ let pokemonRepository = (function () {
     });
    }
 
-    return {
-        // All returns from IIFE with matching keywords and values
+    return { // IIFE returns object that exposes methods for interacting with the Pokemon data and modal functionality
+    // All returns from IIFE with matching keywords and values
         getAll: getAll,
         add: add,
         addListItem: addListItem,
@@ -69,12 +75,12 @@ let pokemonRepository = (function () {
         loadDetails: loadDetails
     };
 })();
-
-// Data is now loaded
+    
 pokemonRepository.loadList().then(function() {
-    // forEach() loop
+// Called to fetch Pokemon data and initialize the Pokemon list in HTML
     pokemonRepository.getAll().forEach(function(pokemon) {
-        // Call to add list item
+    // forEach() loop
         pokemonRepository.addListItem(pokemon);
+        // Call to add list item
     });
 });
