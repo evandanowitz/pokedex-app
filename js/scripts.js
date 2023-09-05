@@ -19,6 +19,9 @@ let pokemonRepository = (function () {
         let titleElement = document.createElement('h1');
         titleElement.innerHTML = title; // Set the modal title here
     
+        let contentElement = document.createElement('p');
+        contentElement.innerHTML = text; // Set the modal content here
+
     async function loadList() { // Fetches list of Pokemon and adds them to the pokemonList
         try {
             const response = await fetch(apiUrl);
