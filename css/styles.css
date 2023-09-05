@@ -49,6 +49,10 @@ body {
   text-align: center;
 }
 
+#modal-container {
+  display: none;
+}
+
 .pokemon-list {
     list-style-type: none;
 }
