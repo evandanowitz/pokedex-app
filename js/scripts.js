@@ -35,6 +35,25 @@ let pokemonRepository = (function () {
         modalContainer.classList.add('is-visible');
     }
     
+    function hideModal() { // Hides modal by removing "is-visible" class
+        modalContainer.classList.remove('is-visible');
+        
+        // Closes modal when "Escape" key is pressed
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+                hideModal();  
+            }
+        });
+
+        // Closes modal when modal overlay is clicked
+        modalContainer.addEventListener('click', (e) => {
+            let target = e.target;
+            if (target === modalContainer) {
+                hideModal();
+            }
+        });
+    }
+
     async function loadList() { // Fetches list of Pokemon and adds them to the pokemonList
         try {
             const response = await fetch(apiUrl);
