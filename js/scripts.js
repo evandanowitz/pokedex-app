@@ -32,6 +32,9 @@ let pokemonRepository = (function () {
         modal.appendChild(imgElement);
         modalContainer.appendChild(modal);
         
+        modalContainer.classList.add('is-visible');
+    }
+    
     async function loadList() { // Fetches list of Pokemon and adds them to the pokemonList
         try {
             const response = await fetch(apiUrl);
