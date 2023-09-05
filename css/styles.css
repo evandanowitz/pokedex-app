@@ -28,6 +28,34 @@ html, body {
     text-align: center;
 }
 
+.modal { /* Used for styling modal container */
+  margin: auto;
+  display: inline-block;
+  box-sizing: border-box;
+  background: #fff;
+  padding: 15px;
+  width: 100%;
+  max-width: 700px;
+  text-align: left;
+}
+
+.modal-close {
+  float: right;
+  border: 0;
+  background: none;
+  color: #777;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.modal-h1 { /* Used for styling modal's title */
+  margin-top: 0;
+}
+
+.modal-p { /* Used for styling modal's content */
+  margin-bottom: 0;
+}
+
 #modal-container.is-visible {
   /* CSS for modal container - add your own desired CSS styles here */
   display: block;
