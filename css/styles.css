@@ -65,6 +65,8 @@ body {
   border: solid 2.5px darkblue;
   padding: 5px;
   margin: 7.5px;
+  cursor: pointer;
+  opacity: 0.8; /* reduces the opacity of the button to 80% */
 }
 
 /* responsive for all devices */
