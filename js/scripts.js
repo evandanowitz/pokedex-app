@@ -48,23 +48,20 @@ let pokemonRepository = (function () {
                 add(pokemon);
             });
         }).catch(function (e) {
+
+    async function loadDetails(item) { // Fetches additional details for a Pokemon
+    let url = item.detailsUrl; // GET Pokémon details using URL from Pokémon object in parameter (item)
+        try {
+            const response = await fetch(url);
+            const details = await response.json();
+            // Now we add the details to the item
+            item.imgUrl = details.sprites.front_default;
+            item.height = details.height;
+            item.types = details.types;
+        } catch (e) {
             console.error(e);
         }
     }
-   function loadDetails(item) {
-    // GET Pokémon details using URL from Pokémon object in parameter (item)
-    let url = item.detailsUrl;
-    return fetch(url).then(function (response) {
-        return response.json();
-    // Now we add the details to the item
-    }).then(function (details) {
-        item.imgUrl = details.sprites.front_default;
-        item.height = details.height;
-        item.types = details.types;
-    }).catch(function (e) {
-        console.error(e);
-    });
-   }
 
     return { // IIFE returns object that exposes methods for interacting with the Pokemon data and modal functionality
     // All returns from IIFE with matching keywords and values
