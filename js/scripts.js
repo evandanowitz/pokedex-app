@@ -30,7 +30,7 @@ let pokemonRepository = (function () {
                 showDetails(pokemon);
             });
         button.innerText = pokemon.name;
-        button.classList.add('button-class');
+        button.classList.add('pokemon-buttons');
         listPokemon.appendChild(button);
         pokemonList.appendChild(listPokemon);
     }
