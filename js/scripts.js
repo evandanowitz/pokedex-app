@@ -6,6 +6,11 @@ let pokemonRepository = (function () {
     let modalContainer = document.querySelector('#modal-container');
     // Reference to the HTML element for displaying a modal
 
+    function showModal(title, text, imgSrc) { // Displays a modal with specified title and text and image
+        modalContainer.innerHTML = '';
+        let modal = document.createElement('div');
+        modal.classList.add('modal');
+    
     async function loadList() { // Fetches list of Pokemon and adds them to the pokemonList
         try {
             const response = await fetch(apiUrl);
