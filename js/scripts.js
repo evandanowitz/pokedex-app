@@ -6,6 +6,20 @@ let pokemonRepository = (function () {
     let modalContainer = document.querySelector('#modal-container');
     // Reference to the HTML element for displaying a modal
 
+    async function loadList() { // Fetches list of Pokemon and adds them to the pokemonList
+        try {
+            const response = await fetch(apiUrl);
+            const json = await response.json();
+            json.results.forEach(function (item) {
+                let pokemon = {
+                    name: item.name,
+                    detailsUrl: item.url
+                };
+                add(pokemon);
+            });
+        } catch (e) {
+            console.error(e);
+        }
     }
 
     function add(pokemon) { // Adds a Pokemon object to the pokemonList
@@ -30,19 +44,6 @@ let pokemonRepository = (function () {
         listPokemon.appendChild(button);
         pokemonList.appendChild(listPokemon);
     }
-    function loadList() {
-        // GET complete list of Pokemon from API
-        return fetch(apiUrl).then(function (response) {
-            return response.json();
-        }).then(function (json) {
-            json.results.forEach(function (item) {
-                let pokemon = {
-                    name: item.name,
-                    detailsUrl: item.url
-                };
-                add(pokemon);
-            });
-        }).catch(function (e) {
 
     function showDetails(pokemon) { // Displays Pokemon details in modal
         loadDetails(pokemon).then(function () {
