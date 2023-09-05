@@ -6,8 +6,6 @@ let pokemonRepository = (function () {
     let modalContainer = document.querySelector('#modal-container');
     // Reference to the HTML element for displaying a modal
 
-    function getAll() {
-        return pokemonList;
     }
 
     function add(pokemon) { // Adds a Pokemon object to the pokemonList
@@ -18,6 +16,9 @@ let pokemonRepository = (function () {
             // Pokémon's details logged to the console upon clicking its button
             console.log(pokemon);
         });
+
+    function getAll() { // Returns the pokemonList
+        return pokemonList;
     }
 
     function addListItem(pokemon) { // Adds a Pokemon to the HTML list of Pokemon
