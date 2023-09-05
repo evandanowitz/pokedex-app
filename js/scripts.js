@@ -11,11 +11,6 @@ let pokemonRepository = (function () {
     function add(pokemon) { // Adds a Pokemon object to the pokemonList
         pokemonList.push(pokemon);
     }
-    function showDetails(pokemon) {
-        loadDetails(pokemon).then(function () {
-            // Pokémon's details logged to the console upon clicking its button
-            console.log(pokemon);
-        });
 
     function getAll() { // Returns the pokemonList
         return pokemonList;
@@ -48,6 +43,17 @@ let pokemonRepository = (function () {
                 add(pokemon);
             });
         }).catch(function (e) {
+
+    function showDetails(pokemon) { // Displays Pokemon details in modal
+        loadDetails(pokemon).then(function () {
+            let modalContent = `
+                <h1>${pokemon.name}</h1>
+                <p>Height: ${pokemon.height} decimetres</p>`;
+
+            showModal('Pokemon Details', modalContent, pokemon.imgUrl); // Open the modal with the content
+            console.log(pokemon);
+        });
+    }
 
     async function loadDetails(item) { // Fetches additional details for a Pokemon
     let url = item.detailsUrl; // GET Pokémon details using URL from Pokémon object in parameter (item)
