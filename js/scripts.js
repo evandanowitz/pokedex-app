@@ -26,6 +26,12 @@ let pokemonRepository = (function () {
         imgElement.src = imgSrc; // Set the modal Pokemon image here
         imgElement.alt = title; // Set alt text for the image here
     
+        modal.appendChild(closeButtonElement);
+        modal.appendChild(titleElement);
+        modal.appendChild(contentElement);
+        modal.appendChild(imgElement);
+        modalContainer.appendChild(modal);
+        
     async function loadList() { // Fetches list of Pokemon and adds them to the pokemonList
         try {
             const response = await fetch(apiUrl);
