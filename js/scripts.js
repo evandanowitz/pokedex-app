@@ -16,6 +16,9 @@ let pokemonRepository = (function () {
         closeButtonElement.innerText = 'Close';
         closeButtonElement.addEventListener('click', hideModal);
     
+        let titleElement = document.createElement('h1');
+        titleElement.innerHTML = title; // Set the modal title here
+    
     async function loadList() { // Fetches list of Pokemon and adds them to the pokemonList
         try {
             const response = await fetch(apiUrl);
