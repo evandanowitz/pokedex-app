@@ -11,6 +11,11 @@ let pokemonRepository = (function () {
         let modal = document.createElement('div');
         modal.classList.add('modal');
     
+        let closeButtonElement = document.createElement('button');
+        closeButtonElement.classList.add('modal-close');
+        closeButtonElement.innerText = 'Close';
+        closeButtonElement.addEventListener('click', hideModal);
+    
     async function loadList() { // Fetches list of Pokemon and adds them to the pokemonList
         try {
             const response = await fetch(apiUrl);
