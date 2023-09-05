@@ -84,3 +84,8 @@ pokemonRepository.loadList().then(function() {
         // Call to add list item
     });
 });
+
+document.querySelector('#show-modal').addEventListener('click', () => {
+// When "Show Modal" button is clicked, showModal function is called to display modal
+    pokemonRepository.showModal('Pokémon Modal', 'Details of all Pokémon can be found here!');
+});
