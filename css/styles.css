@@ -18,8 +18,10 @@
   display: grid;
   text-align: center;
 }
-body {
-    background-color: limegreen;
+
+html, body {
+  font-family: Arial, sans-serif;
+  background-color: limegreen;
 }
 
 .pokedex_logo { /* Used for styling page logo */
