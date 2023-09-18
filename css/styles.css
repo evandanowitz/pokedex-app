@@ -18,16 +18,13 @@
   display: grid;
   text-align: center;
 }
-
 html, body {
   font-family: Arial, sans-serif;
   background-color: limegreen;
 }
-
 .pokedex_logo { /* Used for styling page logo */
     text-align: center;
 }
-
 .modal { /* Used for styling modal container */
   margin: auto;
   display: inline-block;
@@ -38,7 +35,6 @@ html, body {
   max-width: 700px;
   text-align: left;
 }
-
 .modal-close {
   float: right;
   border: 0;
@@ -47,15 +43,12 @@ html, body {
   text-decoration: underline;
   cursor: pointer;
 }
-
 .modal-h1 { /* Used for styling modal's title */
   margin-top: 0;
 }
-
 .modal-p { /* Used for styling modal's content */
   margin-bottom: 0;
 }
-
 #modal-container.is-visible {
   /* CSS for modal container - add your own desired CSS styles here */
   display: block;
@@ -78,15 +71,13 @@ html, body {
   display: grid;
   text-align: center;
 }
-
 #modal-container {
   display: none;
 }
-
 .pokemon-list {
     list-style-type: none;
+    margin-top: 75px;
 }
-
 .pokemon-buttons { /* Used for styling buttons in list of Pokemon */
   background-color: yellow;
   color: black;
@@ -98,7 +89,9 @@ html, body {
   cursor: pointer;
   opacity: 0.8; /* reduces the opacity of the button to 80% */
 }
-
+.list-group-item {
+  background-color: limegreen;
+}
 /* responsive for all devices */
 @media all and (max-width: 500px) { /* small devices */
     .grid {
