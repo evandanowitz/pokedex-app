@@ -1,10 +1,7 @@
 let pokemonRepository = (function () {
-    let pokemonList = [];
-    // Pokémon array in IIFE
-    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
-    // The URL to fetch Pokémon data from
-    let modalContainer = document.querySelector('#modal-container');
-    // Reference to the HTML element for displaying a modal
+    let pokemonList = []; // Pokémon array in IIFE
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150'; // The URL to fetch Pokémon data from
+    let modalContainer = document.querySelector('#myModal'); // Reference to the HTML element for displaying a modal
 
     function showModal(title, text, imgSrc) { // Displays a modal with specified title and text and image
         modalContainer.innerHTML = '';
