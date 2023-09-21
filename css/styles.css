@@ -29,3 +29,20 @@
   cursor: pointer;
   opacity: 0.8; /* reduces the opacity of the button to 80% */
 }
+
+.list-group-item {
+  height: 75px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 10px;
+  border: none;
+  background-color: limegreen;
+}
+
+.modal-content {
+  background-color: lightblue;
+}
