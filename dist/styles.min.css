@@ -1,0 +1,47 @@
+body {
+  background-color: #32cd32;
+}
+#myModal {
+  position: fixed;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  overflow: auto;
+  text-align: center;
+  display: none;
+}
+#myModal.is-visible {
+  display: grid;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+}
+.pokemon-buttons {
+  background-color: #ff0;
+  color: #000;
+  font-size: 18px;
+  text-align: center;
+  border: 2.5px solid #003a70;
+  padding: 5px;
+  margin: 7.5px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+.list-group-item {
+  height: 75px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 10px;
+  border: none;
+  background-color: #32cd32;
+}
+.modal-content {
+  background-color: #add8e6;
+}
