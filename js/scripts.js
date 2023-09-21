@@ -48,17 +48,23 @@ let pokemonRepository = (function () {
 
         // Create the button element
         let button = document.createElement('button');
-        listPokemon.classList.add('list-group-item', 'mx-auto');
         button.innerText = pokemon.name;
-        
         button.classList.add('pokemon-buttons', 'btn', 'btn-primary', 'btn-sm');
         
+        // Set fixed width and height for the buttons
+        button.style.width = '150px';
+        button.style.height = '40px';
+
         // Set data attributes to trigger the modal
-        button.setAttribute('data-target', '#modal-container');
+        button.setAttribute('data-target', '#myModal');
         button.setAttribute('data-toggle', 'modal');
 
-        listPokemon.appendChild(button);
-        pokemonList.appendChild(listPokemon);
+        // Append the button to the list item
+        listItem.appendChild(button);
+        // Append the list item to the column div
+        colDiv.appendChild(listItem);
+        // Append the column div to the row
+        pokemonList.appendChild(colDiv);
         
         button.addEventListener('click', function(event) {
             showDetails(pokemon);
@@ -74,25 +80,24 @@ let pokemonRepository = (function () {
             modalContent.innerHTML = `
                 <h1>${pokemon.name}</h1>
                 <p>Height: ${pokemon.height} decimetres</p>
+                <p>Type(s): ${pokemon.types.join(', ')}</p> <!-- Display types as a comma-separated list -->
                 <img src='${pokemon.imgUrl}' alt='${pokemon.name}'>`;
 
             modalBody.appendChild(modalContent);
-
-            // Open / Close modal
-            $('#modal-container').modal('show');
-            console.log(pokemon);
         });
     }
 
     async function loadDetails(item) { // Fetches additional details for a Pokemon
     let url = item.detailsUrl; // GET Pokémon details using URL from Pokémon object in parameter (item)
+        
         try {
             const response = await fetch(url);
             const details = await response.json();
+            
             // Now we add the details to the item
             item.imgUrl = details.sprites.front_default;
             item.height = details.height;
-            item.types = details.types;
+            item.types = details.types.map(type => type.type.name); // Extract and store the Pokemon types
         } catch (e) {
             console.error(e);
         }
