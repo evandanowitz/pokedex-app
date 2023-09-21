@@ -7,47 +7,7 @@ let pokemonRepository = (function () {
         modalContainer.innerHTML = '';
         let modal = document.createElement('div');
         modal.classList.add('modal');
-    
-        let closeButtonElement = document.createElement('button');
-        closeButtonElement.classList.add('modal-close');
-        closeButtonElement.innerText = 'Close';
-        closeButtonElement.addEventListener('click', hideModal);
-    
-        let titleElement = document.createElement('h1');
-        titleElement.innerHTML = title; // Set the modal title here
-    
-        let contentElement = document.createElement('p');
-        contentElement.innerHTML = text; // Set the modal content here
-
-        let imgElement = document.createElement('img');
-        imgElement.src = imgSrc; // Set the modal Pokemon image here
-        imgElement.alt = title; // Set alt text for the image here
-    
-        modal.appendChild(closeButtonElement);
-        modal.appendChild(titleElement);
-        modal.appendChild(contentElement);
-        modal.appendChild(imgElement);
-        modalContainer.appendChild(modal);
-        
-        modalContainer.classList.add('is-visible');
     }
-    
-    function hideModal() { // Hides modal by removing "is-visible" class
-        modalContainer.classList.remove('is-visible');
-    }
-
-        window.addEventListener('keydown', (e) => { // Closes modal when "Escape" key is pressed
-            if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-                hideModal();  
-            }
-        });
-
-        modalContainer.addEventListener('click', (e) => { // Closes modal when modal overlay is clicked
-            let target = e.target;
-            if (target === modalContainer) {
-                hideModal();
-            }
-        });
 
     async function loadList() { // Fetches list of Pokemon and adds them to the pokemonList
         try {
