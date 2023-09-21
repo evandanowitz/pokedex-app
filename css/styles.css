@@ -1,4 +1,8 @@
-#modal-container {
+body {
+  background-color: limegreen;
+}
+
+#myModal {
   position: fixed;
   box-sizing: border-box;
   top: 0;
