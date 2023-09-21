@@ -35,8 +35,18 @@ let pokemonRepository = (function () {
 
     function addListItem(pokemon) { // Adds a Pokemon to the HTML list of Pokemon
         let pokemonList = document.querySelector('.pokemon-list');
-        let listPokemon = document.createElement('li');
 
+        // Create a div element for the column
+        let colDiv = document.createElement('div');
+
+        // Use Bootstrap responsive grid classes to set the number of items per row
+        colDiv.classList.add('col-xl-2', 'col-lg-3', 'col-md-4', 'col-sm-6', 'col-12', 'mb-4');
+       
+        // Create the list item element
+        let listItem = document.createElement('li');
+        listItem.classList.add('list-group-item', 'mx-auto');
+
+        // Create the button element
         let button = document.createElement('button');
         listPokemon.classList.add('list-group-item', 'mx-auto');
         button.innerText = pokemon.name;
