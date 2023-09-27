@@ -1,15 +1,15 @@
 let pokemonRepository = (function () {
-    let pokemonList = []; // Pokémon array in IIFE
-    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150'; // The URL to fetch Pokémon data from
-    let modalContainer = document.querySelector('#myModal'); // Reference to the HTML element for displaying a modal
+    let pokemonList = [];
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+    let modalContainer = document.querySelector('#myModal');
 
-    function showModal(title, text, imgSrc) { // Displays a modal with specified title and text and image
+    function showModal(title, text, imgSrc) {
         modalContainer.innerHTML = '';
         let modal = document.createElement('div');
         modal.classList.add('modal');
     }
 
-    async function loadList() { // Fetches list of Pokemon and adds them to the pokemonList
+    async function loadList() {
         try {
             const response = await fetch(apiUrl);
             const json = await response.json();
@@ -25,45 +25,35 @@ let pokemonRepository = (function () {
         }
     }
 
-    function add(pokemon) { // Adds a Pokemon object to the pokemonList
+    function add(pokemon) {
         pokemonList.push(pokemon);
     }
 
-    function getAll() { // Returns the pokemonList
+    function getAll() {
         return pokemonList;
     }
 
-    function addListItem(pokemon) { // Adds a Pokemon to the HTML list of Pokemon
+    function addListItem(pokemon) {
         let pokemonList = document.querySelector('.pokemon-list');
 
-        // Create a div element for the column
         let colDiv = document.createElement('div');
-
-        // Use Bootstrap responsive grid classes to set the number of items per row
         colDiv.classList.add('col-xl-2', 'col-lg-3', 'col-md-4', 'col-sm-6', 'col-12', 'mb-4');
        
-        // Create the list item element
         let listItem = document.createElement('li');
         listItem.classList.add('list-group-item', 'mx-auto');
 
-        // Create the button element
         let button = document.createElement('button');
         button.innerText = pokemon.name;
         button.classList.add('pokemon-buttons', 'btn', 'btn-primary', 'btn-sm');
         
-        // Set fixed width and height for the buttons
         button.style.width = '150px';
         button.style.height = '40px';
 
-        // Set data attributes to trigger the modal
         button.setAttribute('data-target', '#myModal');
         button.setAttribute('data-toggle', 'modal');
 
-        // Append the button to the list item
         listItem.appendChild(button);
-        // Append the list item to the column div
         colDiv.appendChild(listItem);
-        // Append the column div to the row
         pokemonList.appendChild(colDiv);
         
         button.addEventListener('click', function(event) {
@@ -71,10 +61,10 @@ let pokemonRepository = (function () {
         });
     }
 
-    function showDetails(pokemon) { // Displays Pokemon details in modal
+    function showDetails(pokemon) {
         loadDetails(pokemon).then(function () {
             let modalBody = document.querySelector('.modal-body');
-            modalBody.innerHTML = ''; // Clear previous content
+            modalBody.innerHTML = '';
             
             let modalContent = document.createElement('div');
             modalContent.innerHTML = `
@@ -87,24 +77,22 @@ let pokemonRepository = (function () {
         });
     }
 
-    async function loadDetails(item) { // Fetches additional details for a Pokemon
-    let url = item.detailsUrl; // GET Pokémon details using URL from Pokémon object in parameter (item)
+    async function loadDetails(item) {
+    let url = item.detailsUrl;
         
         try {
             const response = await fetch(url);
             const details = await response.json();
             
-            // Now we add the details to the item
             item.imgUrl = details.sprites.front_default;
             item.height = details.height;
-            item.types = details.types.map(type => type.type.name); // Extract and store the Pokemon types
+            item.types = details.types.map(type => type.type.name);
         } catch (e) {
             console.error(e);
         }
     }
 
-    return { // IIFE returns object that exposes methods for interacting with the Pokemon data and modal functionality
-    // All returns from IIFE with matching keywords and values
+    return {
         getAll: getAll,
         add: add,
         addListItem: addListItem,
@@ -115,8 +103,8 @@ let pokemonRepository = (function () {
     };
 })();
 
-pokemonRepository.loadList().then(function() { // Called to fetch Pokemon data and initialize the Pokemon list in HTML
-    pokemonRepository.getAll().forEach(function(pokemon) { // forEach() loop
-        pokemonRepository.addListItem(pokemon); // Call to add list item
+pokemonRepository.loadList().then(function() {
+    pokemonRepository.getAll().forEach(function(pokemon) {
+        pokemonRepository.addListItem(pokemon);
     });
 });
