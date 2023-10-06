@@ -1,4 +1,4 @@
-# simple-js-app
+# pokédex-app
 
 The Pokédex application project displays a list of 150 Pokémon that have been dynamically created in JavaScript and are sourced from an external API. When a user clicks on one of the Pokémon buttons, a modal will appear displaying details of the selected Pokémon such as name, height, type(s) and an image. To get rid of the modal, click anywhere outside of the modal, the "X" in the top-right corner, or press the "Esc" key on your keyboard.
 
